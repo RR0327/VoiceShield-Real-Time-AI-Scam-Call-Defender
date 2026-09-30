@@ -313,3 +313,5 @@ Refer to [`DEPLOYMENT.md`](./DEPLOYMENT.md) for full deployment instructions:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+_Third-party libraries and dependencies remain subject to their respective licenses._
