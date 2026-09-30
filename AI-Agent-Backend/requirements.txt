@@ -5,5 +5,7 @@ pydantic
 python-dotenv
 assemblyai
 python-multipart
+
+
 psycopg2-binary
 psycopg[binary]
