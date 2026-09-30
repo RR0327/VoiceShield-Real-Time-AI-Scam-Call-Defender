@@ -9,6 +9,8 @@ class Alert(Base):
     message = Column(String, index=True)
     severity = Column(String)
     status = Column(String, default="active")
+    category = Column(String, default="General")
+    risk_score = Column(Integer, default=0)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 class Event(Base):

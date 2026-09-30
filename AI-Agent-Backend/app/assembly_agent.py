@@ -2,34 +2,52 @@ import assemblyai as aai
 from app.config import settings
 
 def init_assemblyai():
-    if settings.ASSEMBLYAI_API_KEY:
-        aai.settings.api_key = settings.ASSEMBLYAI_API_KEY
+    api_key = (settings.ASSEMBLYAI_API_KEY or "").strip()
+    if api_key:
+        aai.settings.api_key = api_key
     else:
-        print("WARNING: AssemblyAI API Key not found in .env")
+        print("WARNING: AssemblyAI API Key not configured in .env")
 
 def transcribe_audio(file_path: str) -> dict:
     """
-    Transcribes an audio file using AssemblyAI and returns the text.
+    Transcribes an audio file using AssemblyAI SDK and returns structured result.
     """
-    if not settings.ASSEMBLYAI_API_KEY:
-        return {"text": "Error: AssemblyAI API key is missing."}
+    api_key = (settings.ASSEMBLYAI_API_KEY or "").strip()
+    if not api_key:
+        return {
+            "success": False, 
+            "text": "", 
+            "error": "AssemblyAI API key is missing from backend configuration."
+        }
         
     try:
+        init_assemblyai()
         transcriber = aai.Transcriber()
         transcript = transcriber.transcribe(file_path)
         
         if transcript.status == aai.TranscriptStatus.error:
-            return {"text": f"Transcription error: {transcript.error}"}
+            return {
+                "success": False, 
+                "text": "", 
+                "error": str(transcript.error or "Unknown transcription error")
+            }
             
-        return {"text": transcript.text}
+        return {
+            "success": True, 
+            "text": transcript.text or "", 
+            "error": None
+        }
     except Exception as e:
-        return {"text": f"Failed to transcribe: {str(e)}"}
+        return {
+            "success": False, 
+            "text": "", 
+            "error": f"AssemblyAI transcription exception: {str(e)}"
+        }
 
 def process_voice_input(input_text: str) -> dict:
-    """
-    Fallback for text-only input.
-    """
+    """Fallback text processor."""
     return {
-        "text": input_text
+        "success": True,
+        "text": input_text,
+        "error": None
     }
-
