@@ -13,19 +13,19 @@
 
 ## Table of Contents
 
-- [Overview](#-overview)
-- [System Architecture](#-system-architecture)
-- [Key Features](#-key-features)
-- [Scam Detection Vectors](#-scam-detection-vectors)
-- [Tech Stack](#-tech-stack)
-- [Repository Structure](#-repository-structure)
-- [Getting Started](#-getting-started)
+- [Overview](#overview)
+- [System Architecture](#system-architecture)
+- [Key Features](#key-features)
+- [Scam Detection Vectors](#scam-detection-vectors)
+- [Tech Stack](#tech-stack)
+- [Repository Structure](#repository-structure)
+- [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [1-Click Quickstart (Windows)](#1-click-quickstart-windows)
   - [Manual Local Setup](#manual-local-setup)
-- [API Reference](#-api-reference)
-- [Production Deployment](#-production-deployment)
-- [License](#-license)
+- [API Reference](#api-reference)
+- [Production Deployment](#production-deployment)
+- [License](#license)
 
 ---
 
